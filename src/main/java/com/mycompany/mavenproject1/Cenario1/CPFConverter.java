@@ -12,7 +12,7 @@ public class CPFConverter implements AttributeConverter<CPF, String>{
     
     @Override
     public String convertToDatabaseColumn(CPF attribute) {
-        return attribute.numero;
+        return attribute.numero();
     }
 
     @Override
