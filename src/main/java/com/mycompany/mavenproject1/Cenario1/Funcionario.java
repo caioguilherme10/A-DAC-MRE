@@ -1,7 +1,13 @@
 package com.mycompany.mavenproject1.Cenario1;
 
 import java.io.Serializable;
-import javax.annotation.Generated;
+import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -19,7 +25,11 @@ public class Funcionario implements Serializable{
     private RG RG;
     
     @Embedded
-    sprivate CPF cpf;
+    private CPF cpf;
+    
+    @OneToMany(mappedBy = "funcionario", targetEntity = Alocacao.class)
+    @Basic
+    private List<Alocacao> alocacoes;
     
     private float salario;
 

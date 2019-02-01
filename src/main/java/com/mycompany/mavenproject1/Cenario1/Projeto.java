@@ -1,11 +1,14 @@
 package com.mycompany.mavenproject1.Cenario1;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
 import java.util.Objects;
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -24,15 +27,19 @@ public class Projeto implements Serializable{
     private String area;
     
     @Temporal(TemporalType.DATE)
-    private LocalDate dataInicio;
+    private Date dataInicio;
     
     @Temporal(TemporalType.DATE)
-    private LocalDate dataConclusao;
+    private Date dataConclusao;
 
+    @OneToMany(mappedBy = "projeto", targetEntity = Alocacao.class)
+    @Basic
+    private List<Alocacao> alocacoes;
+    
     public Projeto() {
     }
 
-    public Projeto(String descricao, String area, LocalDate dataInicio, LocalDate dataConclusao) {
+    public Projeto(String descricao, String area, Date dataInicio, Date dataConclusao) {
         this.descricao = descricao;
         this.area = area;
         this.dataInicio = dataInicio;
@@ -63,61 +70,28 @@ public class Projeto implements Serializable{
         this.area = area;
     }
 
-    public LocalDate getDataInicio() {
+    public Date getDataInicio() {
         return dataInicio;
     }
 
-    public void setDataInicio(LocalDate dataInicio) {
+    public void setDataInicio(Date dataInicio) {
         this.dataInicio = dataInicio;
     }
 
-    public LocalDate getDataConclusao() {
+    public Date getDataConclusao() {
         return dataConclusao;
     }
 
-    public void setDataConclusao(LocalDate dataConclusao) {
+    public void setDataConclusao(Date dataConclusao) {
         this.dataConclusao = dataConclusao;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 89 * hash + this.id;
-        hash = 89 * hash + Objects.hashCode(this.descricao);
-        hash = 89 * hash + Objects.hashCode(this.area);
-        hash = 89 * hash + Objects.hashCode(this.dataInicio);
-        hash = 89 * hash + Objects.hashCode(this.dataConclusao);
-        return hash;
+    public List<Alocacao> getAlocacoes() {
+        return alocacoes;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Projeto other = (Projeto) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (!Objects.equals(this.descricao, other.descricao)) {
-            return false;
-        }
-        if (!Objects.equals(this.area, other.area)) {
-            return false;
-        }
-        if (!Objects.equals(this.dataInicio, other.dataInicio)) {
-            return false;
-        }
-        if (!Objects.equals(this.dataConclusao, other.dataConclusao)) {
-            return false;
-        }
-        return true;
+    public void setAlocacoes(List<Alocacao> alocacoes) {
+        this.alocacoes = alocacoes;
     }
-    
+
 }
