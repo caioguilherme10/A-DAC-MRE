@@ -15,10 +15,10 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class CPF implements Serializable{
     
-    private String numero;
+    private String cpf;
 
     public CPF(String numero) {
-        this.numero = numero;
+        this.cpf = numero;
     }
 
     public CPF() {
@@ -26,11 +26,11 @@ public class CPF implements Serializable{
     }
 
     public String numero() {
-        return numero;
+        return cpf;
     }
 
     public String formatado() {
-        return numero;
+        return cpf;
     }
 
     public boolean valido() {

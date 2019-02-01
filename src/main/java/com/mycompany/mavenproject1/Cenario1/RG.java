@@ -15,10 +15,10 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class RG implements Serializable{
     
-    private String numero;
+    private String rg;
 
     public RG(String numero) {
-        this.numero = numero;
+        this.rg = numero;
     }
 
     public RG() {
@@ -26,11 +26,11 @@ public class RG implements Serializable{
     }
 
     public String numero() {
-        return numero;
+        return rg;
     }
 
     public String formatado() {
-        return numero;
+        return rg;
     }
 
     public boolean valido() {
